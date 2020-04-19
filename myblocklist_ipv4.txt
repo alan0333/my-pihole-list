@@ -1197,3 +1197,4 @@
 127.0.0.1 ziyu.net
 127.0.0.1 zmnqoymznwng.com
 127.0.0.1 zucks.net
+127.0.0.1 v66.genieesspv.jp
