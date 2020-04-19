@@ -1198,3 +1198,6 @@
 127.0.0.1 zmnqoymznwng.com
 127.0.0.1 zucks.net
 127.0.0.1 v66.genieesspv.jp
+127.0.0.1 ipcheck.blogsys.jp
+::1 v66.genieesspv.jp
+::1 ipcheck.blogsys.jp
