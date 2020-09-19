@@ -1,7 +1,7 @@
 #!/bin/bash
 #####CHANGE STUFF HERE
 PIHOLE_DIR="/etc/pihole"
-ADLIST_URL="https://raw.githubusercontent.com/jpnrop/my-adblock-list/master/list"
+ADLIST_URL="https://raw.githubusercontent.com/jpnrop/pihole/master/list"
 CLEAN_ADLISTS_BEFORE_UPDATE=true
 
 
