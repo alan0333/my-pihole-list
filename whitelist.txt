@@ -80,6 +80,7 @@ imgix.net
 imgs.xkcd.com
 instantmessaging-pa.googleapis.com
 intercom.io
+ipinfo.io
 jquery.com
 jsdelivr.net
 keystone.mwbsys.com
