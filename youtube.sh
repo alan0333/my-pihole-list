@@ -29,11 +29,13 @@ wait
 # check to see if gawk is installed. if not it will install it
 dpkg -l | grep -qw gawk || sudo apt-get install gawk -y
 
+sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/ignore.list' > $repoDir/ignore.list
+
+wait
+
 # remove the domains from the ignore.list 
 while read line ;  do  sed -i "/.*$line.*/d" $repoDir/youtubelist.txt ; done < $repoDir/ignore.list
 while read line ;  do  sed -i "/.*$line.*/d" $repoDir/black.list ; done < $repoDir/ignore.list
-
-
 
 wait 
 # remove the duplicate records in place
