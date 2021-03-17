@@ -30,6 +30,8 @@ wait
 dpkg -l | grep -qw gawk || sudo apt-get install gawk -y
 
 sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/ignore.list' > $repoDir/ignore.list
+sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt' > $repoDir/youtubelist.txt
+sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list' > $repoDir/black.list
 
 wait
 
