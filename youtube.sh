@@ -1,5 +1,7 @@
 #!/bin/sh
 # Update the pihole list with youtube ads 
+# this shell script is made by Kiro 
+#Thank you for using it and enjoy 
 
 # The script will create a file with all the youtube ads found in hostsearch and from the logs of the Pi-hole
 # it will append the list into a file called blacklist.txt'/etc/pihole/blacklist.txt'
@@ -8,7 +10,7 @@ piholeIPV4=$(hostname -I |awk '{print $1}')
 piholeIPV6=$(hostname -I |awk '{print $2}')
 
 # This need to be chnaged to your actual repo dir on your machine
-repoDir='/etc/pihole/scripts/youTube_ads_4_pi-hole'
+repoDir=$(pwd)
 
 blackListFile='/etc/pihole/black.list'
 blacklist='/etc/pihole/blacklist.txt'
@@ -21,23 +23,19 @@ sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/mas
 >>$blackListFile
 
 #Enable if you want to include the list added by the crowed
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/crowed_list.txt'\
->>$blackListFile
+#sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/crowed_list.txt'\
+#>>$blackListFile
 
 wait 
 
 # check to see if gawk is installed. if not it will install it
 dpkg -l | grep -qw gawk || sudo apt-get install gawk -y
 
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/ignore.list' > $repoDir/ignore.list
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt' > $repoDir/youtubelist.txt
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list' > $repoDir/black.list
-
-wait
-
 # remove the domains from the ignore.list 
 while read line ;  do  sed -i "/.*$line.*/d" $repoDir/youtubelist.txt ; done < $repoDir/ignore.list
 while read line ;  do  sed -i "/.*$line.*/d" $repoDir/black.list ; done < $repoDir/ignore.list
+
+
 
 wait 
 # remove the duplicate records in place
@@ -52,4 +50,4 @@ while read ignoredDns ; do /usr/bin/sqlite3 /etc/pihole/gravity.db "delete from 
 # only 200 Domains at once
 sudo xargs -a $blacklist -L200 pihole -b -nr
 # restart dns  
-sudo pihole restartdns
+sudo pihole restartdns reload-lists
